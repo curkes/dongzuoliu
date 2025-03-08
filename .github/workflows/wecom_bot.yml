@@ -2,7 +2,7 @@ name: WeChat Bot Daily Notification
 
    on:
      schedule:
-       - cron: '0 1 * * *'  # UTC时间1点（即北京时间9点）
+       - cron: '0 4 * * *'  # UTC时间1点（即北京时间9点）
      workflow_dispatch:  # 支持手动触发
 
    jobs:
