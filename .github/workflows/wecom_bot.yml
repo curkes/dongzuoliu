@@ -1,0 +1,27 @@
+name: WeChat Bot Daily Notification
+
+   on:
+     schedule:
+       - cron: '0 1 * * *'  # UTC时间1点（即北京时间9点）
+     workflow_dispatch:  # 支持手动触发
+
+   jobs:
+     send-message:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Checkout code
+           uses: actions/checkout@v4
+
+         - name: Set up Python
+           uses: actions/setup-python@v4
+           with:
+             python-version: '3.x'
+
+         - name: Install dependencies
+           run: pip install requests
+
+         - name: Run WeChat Bot
+           env:
+             WEBHOOK_URL: ${{ secrets.https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=63218b26-8d49-4ded-96bf-5439366b8ced}}  # 通过Secrets配置Webhook地址
+           run: |
+             python wechat_bot.py
